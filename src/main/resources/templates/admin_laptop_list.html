@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin - Laptop List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container py-5">
+        <h1 class="mb-4">Laptop List</h1>
+        <a href="/admin/laptops/add" class="btn btn-primary mb-3">Add Laptop</a>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Brand</th>
+                    <th>Type</th>
+                    <th>Harga Sewa</th>
+                    <th>Available</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="laptop : ${laptops}">
+                    <td th:text="${laptop.id}"></td>
+                    <td th:text="${laptop.brand}"></td>
+                    <td th:text="${laptop.type}"></td>
+                    <td th:text="${laptop.hargaSewa}"></td>
+                    <td th:text="${laptop.isAvailable}"></td>
+                    <td>
+                        <a th:href="@{/admin/laptops/delete/{id}(id=${laptop.id})}"
+                            class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
